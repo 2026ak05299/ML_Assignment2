@@ -9,9 +9,12 @@ TARGET_COLUMN = "NObeyesdad"
 MIN_FEATURES = 12
 MIN_ROWS = 500
 
+# The target classes are defined by BMI = Weight / Height^2, so these two columns leak the label.
+LEAKY_FEATURES = ["Height", "Weight"]
+
 
 def load_obesity_data(path: Path = DATASET_PATH) -> pd.DataFrame:
-    return pd.read_csv(path)
+    return pd.read_csv(path).drop(columns=LEAKY_FEATURES)
 
 
 def split_feature_types(frame: pd.DataFrame) -> tuple[list[str], list[str]]:
