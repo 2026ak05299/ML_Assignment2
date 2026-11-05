@@ -63,7 +63,7 @@ The dataset has no missing values.
 
 **Repository:** https://github.com/2026ak05299/ML_Assignment2
 
-**Live Streamlit app:** _<add the Streamlit Community Cloud URL after deployment>_
+**Live Streamlit app:** https://2026ak05299.streamlit.app/
 
 ## d. Models used
 
