@@ -46,12 +46,15 @@ def multiclass_auc(labels: pd.Series, probabilities: np.ndarray, classes: np.nda
 def score_model(model, features: pd.DataFrame, labels: pd.Series) -> dict[str, float]:
     predictions = model.predict(features)
     probabilities = model.predict_proba(features)
+    # Macro-average over classes present in the labels, so partial test files are not penalised for absent ones.
+    present = sorted(set(labels))
+    averaging = {"labels": present, "average": "macro", "zero_division": 0}
     return {
         "Accuracy": accuracy_score(labels, predictions),
         "AUC": multiclass_auc(labels, probabilities, model.classes_),
-        "Precision": precision_score(labels, predictions, average="macro", zero_division=0),
-        "Recall": recall_score(labels, predictions, average="macro", zero_division=0),
-        "F1": f1_score(labels, predictions, average="macro", zero_division=0),
+        "Precision": precision_score(labels, predictions, **averaging),
+        "Recall": recall_score(labels, predictions, **averaging),
+        "F1": f1_score(labels, predictions, **averaging),
         "MCC": matthews_corrcoef(labels, predictions),
     }
 
