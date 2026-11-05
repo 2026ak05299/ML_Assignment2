@@ -4,6 +4,8 @@
 
 ## b. Dataset description
 
+About 77% of the rows are synthetic. The dataset's authors created them with SMOTE to balance the classes, and the UCI page says so.
+
 ## c. GitHub Repository Link
 
 ## d. Models used
