@@ -1,0 +1,6 @@
+model,best_params,cv_f1_macro
+logistic_regression,{'C': 100.0},0.5522
+decision_tree,"{'criterion': 'gini', 'max_depth': 15, 'min_samples_leaf': 1}",0.7348
+knn,"{'n_neighbors': 3, 'weights': 'distance'}",0.725
+naive_bayes,{'var_smoothing': 0.1},0.473
+svm,"{'C': 1.0, 'gamma': 0.5}",0.7996
